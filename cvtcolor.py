@@ -1,0 +1,17 @@
+import cv2
+img = cv2.imread("images\\anh1.jpg")
+img1 = cv2.imread("images\\cayxang.jpg")
+img_gray=cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
+
+img_lab=cv2.cvtColor(img,cv2.COLOR_RGB2LAB)
+imgHsl=cv2.cvtColor(img,cv2.COLOR_RGB2HLS)
+cv2.imshow("anh goc",img)
+cv2.imshow("anh den trang",img_gray)
+(thread, img_swap) = cv2.threshold(img_gray,128,225, cv2.THRESH_BINARY)
+img_and= cv2.bitwise_and(thread,img_swap,mask=None)
+cv2.imshow("anh binary ",img_swap)
+cv2.imshow("anh hsl",imgHsl)
+cv2.imshow("anh lab",img_lab)
+cv2.imshow("anh and",img_and)
+cv2.waitKey(0)
+cv2.destroyWindow()

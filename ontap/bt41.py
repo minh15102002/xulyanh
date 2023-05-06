@@ -1,0 +1,15 @@
+import cv2
+import numpy as np
+img=cv2.imread('.\images\\cayxang.jpg')
+img_hsv=cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+h,s,v=cv2.split(img_hsv)
+img_eq_v=cv2.equalizeHist(v)
+img_new_hsv=cv2.merge((h,s,img_eq_v))
+img_rgb=cv2.cvtColor(img_new_hsv,cv2.COLOR_HSV2RGB)
+img_bgr=cv2.cvtColor(img_hsv,cv2.COLOR_HSV2RGB)
+cv2.imshow('Anh bai 41',img_rgb)
+cv2.imshow('Anh goc hsv',img_hsv)
+cv2.imshow('Anh goc ',img)
+cv2.imshow('Anh goc hsv ve bgr',img_bgr)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
